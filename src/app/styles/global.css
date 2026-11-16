@@ -12,10 +12,9 @@
   --font-serif-en: 'Cormorant Garamond', 'Gowun Batang', serif;
   --font-script: 'Pinyon Script', cursive;
 
-  /* 종이 질감 — 미세한 입자 + 은은한 얼룩(섬유) 두 겹 */
-  --grain:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.4 0 0 0 0 0.35 0 0 0 0.11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.05' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.46 0 0 0 0 0.4 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  /* 종이 질감 — 고운 입자 + 은은한 결 무늬를 미리 구운 PNG 타일.
+     (SVG feTurbulence 를 그대로 쓰면 애니메이션 중 매 프레임 다시 그려져 버벅인다) */
+  --grain: url('./paper-grain.png');
 
   color-scheme: light;
 }
