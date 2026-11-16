@@ -25,12 +25,12 @@
   font-size: 2.6rem;
   line-height: 1.15;
 }
-/* 레퍼런스보다 크게 — 화면 폭의 약 80% */
+/* 화면 폭의 약 2/3 */
 .polaroid {
-  width: min(76%, 320px);
+  width: min(66%, 280px);
   margin: 0;
   padding: 14px 14px 0;
-  background: #fbfaf7;
+  background: #fff;
   box-shadow:
     0 1px 2px rgb(59 43 34 / 0.08),
     0 14px 34px rgb(59 43 34 / 0.18);

@@ -7,7 +7,7 @@ import type { WeddingInfo } from './types'
  *   (GitHub Pages 는 /marry-jimin/ 하위 경로라서 '/images/..' 처럼 쓰면 깨진다)
  */
 export const wedding: WeddingInfo = {
-  groom: { name: '유성욱', firstName: '성욱', father: '유길만', mother: '하정자' },
+  groom: { name: '유성욱', firstName: '성욱', father: '유길만', mother: '하지은' },
   bride: { name: '배지민', firstName: '지민', mother: '주용순' },
   date: new Date(2027, 1, 21, 14, 0),
   dateLabel: '2027. 02. 21 SUN PM 2:00',
@@ -37,7 +37,7 @@ export const wedding: WeddingInfo = {
     ],
   },
   transport: [
-    { label: '지하철', lines: ['1호선 시청역 3번 출구 (도보 2분)'] },
+    { label: '지하철', lines: ['1호선 시청역 2번 출구 (도보 2분)'] },
     {
       label: '버스',
       lines: ['29, 86, 87, 99, 106, 110-1, 131, 141, 179', '부산시청 하차'],
@@ -56,7 +56,7 @@ export const wedding: WeddingInfo = {
         { role: '아버지', name: '유길만', bank: '기업은행', number: '288-069260-01-028' },
         {
           role: '어머니',
-          name: '하정자',
+          name: '하지은',
           bank: '카카오뱅크',
           number: '3333-23-8704-900',
           holder: '유성욱',
@@ -68,7 +68,13 @@ export const wedding: WeddingInfo = {
       label: '신부측',
       accounts: [
         { role: '신부', name: '배지민', bank: '국민은행', number: '562101-01-541157' },
-        { role: '어머니', name: '주용순' },
+        {
+          role: '어머니',
+          name: '주용순',
+          bank: '국민은행',
+          number: '562101-01-541157',
+          holder: '배지민',
+        },
       ],
     },
   ],

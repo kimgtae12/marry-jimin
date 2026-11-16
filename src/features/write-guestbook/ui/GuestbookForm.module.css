@@ -4,7 +4,8 @@
   gap: 8px;
 }
 .form input {
-  width: 40%;
+  /* 아래 메시지 칸과 같은 폭 (버튼 72px + 간격 8px 제외) */
+  width: calc(100% - 80px);
 }
 .messageRow {
   display: flex;

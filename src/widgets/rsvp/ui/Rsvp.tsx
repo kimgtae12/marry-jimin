@@ -15,7 +15,7 @@ export function Rsvp() {
       </div>
       <footer className={s.footer}>
         <p className={s.script}>Thank you</p>
-        <p>SUNGWOOK &amp; JIMIN</p>
+        <p>SEONGWOOK &amp; JIMIN</p>
       </footer>
     </Section>
   )

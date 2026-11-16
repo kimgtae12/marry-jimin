@@ -13,7 +13,7 @@ export function Hero() {
       <figure className={s.polaroid}>
         <PhotoFrame src={wedding.mainPhoto} alt="신랑 신부 메인 사진" label="Main Photo" className={s.photo} />
         <figcaption className={s.caption}>
-          SUNGWOOK <Heart width={13} /> JIMIN
+          SEONGWOOK <Heart width={13} /> JIMIN
         </figcaption>
       </figure>
 

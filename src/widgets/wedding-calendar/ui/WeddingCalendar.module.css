@@ -6,7 +6,7 @@
 }
 .calendar {
   width: 100%;
-  max-width: 320px;
+  max-width: 280px;
   margin: 0 auto;
   border-collapse: collapse;
   table-layout: fixed;
@@ -21,8 +21,8 @@
 }
 .calendar td {
   position: relative;
-  height: 42px;
-  font-size: 1rem;
+  height: 36px;
+  font-size: 0.9rem;
 }
 .calendar [data-sun='true'] {
   color: #d9a28f;
@@ -34,8 +34,8 @@
 .calendar td[data-day='true'] span {
   display: inline-grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: var(--paper);
   color: var(--brown);
