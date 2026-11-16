@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 60dvh;
+  margin: 24px 0 0;
+  padding: 4px 4px 12px;
+  list-style: none;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.empty {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}

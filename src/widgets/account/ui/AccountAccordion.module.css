@@ -1,0 +1,80 @@
+.desc {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.group {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.5);
+  overflow: hidden;
+}
+.head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s;
+}
+.group[data-open='true'] .chevron {
+  transform: rotate(-135deg);
+}
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.group[data-open='true'] .body {
+  grid-template-rows: 1fr;
+}
+.items {
+  min-height: 0;
+  margin: 0;
+  padding: 0 18px;
+  list-style: none;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.info p {
+  margin: 0;
+}
+.who {
+  font-size: 0.9rem;
+}
+.who small,
+.number small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+.number {
+  margin-top: 2px !important;
+  font-size: 0.8rem;
+  color: #5b4a3f;
+}

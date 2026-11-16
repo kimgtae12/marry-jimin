@@ -1,0 +1,69 @@
+.month {
+  margin: -12px 0 20px;
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+}
+.calendar {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+  font-family: var(--font-serif-en);
+}
+.calendar th {
+  padding-bottom: 12px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+.calendar td {
+  position: relative;
+  height: 42px;
+  font-size: 1rem;
+}
+.calendar [data-sun='true'] {
+  color: #d9a28f;
+}
+.calendar td span {
+  position: relative;
+}
+/* 예식일 — 단순한 동그라미 */
+.calendar td[data-day='true'] span {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--brown);
+  font-weight: 500;
+}
+.full {
+  margin: 20px 0 40px;
+  text-align: center;
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+.dday {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-serif-en);
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+.ddayCaption {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+.ddayCaption b {
+  color: #e2b4a3;
+}

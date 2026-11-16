@@ -1,0 +1,24 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #bdb3a8 0%, #8f857b 55%, #6e655d 100%);
+}
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-serif-en);
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: rgb(255 255 255 / 0.75);
+  font-size: 0.9rem;
+  background-image: var(--grain);
+  background-blend-mode: overlay;
+}

@@ -1,0 +1,30 @@
+.desc {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+}
+.card {
+  padding: 22px 18px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.6);
+  box-shadow: 0 4px 20px rgb(59 43 34 / 0.06);
+}
+.footer {
+  margin-top: 48px;
+  text-align: center;
+  font-family: var(--font-serif-en);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+}
+.footer p {
+  margin: 0;
+}
+.footer .script {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  color: var(--ink);
+}

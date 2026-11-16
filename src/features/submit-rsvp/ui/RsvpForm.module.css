@@ -1,0 +1,62 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.field {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+.field > span {
+  color: var(--muted);
+}
+.segmented {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.segment {
+  flex: 1;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.segment + .segment {
+  border-left: 1px solid var(--line);
+}
+.segment[aria-checked='true'] {
+  background: var(--brown);
+  color: var(--paper);
+}
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.stepper button {
+  width: 44px;
+  height: 40px;
+  border: 0;
+  background: none;
+  font-size: 1.1rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0;
+  text-align: center;
+}

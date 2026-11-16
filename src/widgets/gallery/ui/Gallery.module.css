@@ -1,0 +1,53 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.grid button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.thumb {
+  aspect-ratio: 1;
+}
+.notice {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  background: rgb(20 14 10 / 0.92);
+  animation: fade 0.25s ease;
+}
+.full {
+  width: min(100%, 440px);
+  aspect-ratio: 4 / 5;
+}
+.counter {
+  margin: 0;
+  color: var(--paper);
+  font-family: var(--font-serif-en);
+  font-size: 0.9rem;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
