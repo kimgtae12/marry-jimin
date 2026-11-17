@@ -3,7 +3,8 @@
   --env-side: #3c281d;
   --env-bottom: #2a1a12;
   --front-h: min(50dvh, 80vw, 384px);
-  --front-drop: 120px;
+  /* 펼친 뒤 주머니가 내려가는 정도 — 아랫부분이 조금 남도록 */
+  --front-drop: calc(var(--front-h) * 0.15);
   --closed-inset: 36px;
   --ease-in-out: cubic-bezier(0.45, 0, 0.2, 1);
 
@@ -108,6 +109,11 @@
   line-height: 1.5;
   color: rgb(246 242 234 / 0.6);
   white-space: pre-line;
+  transition: opacity 0.4s;
+}
+/* 펼친 뒤엔 문구가 반쯤 잘려 보이지 않도록 숨김 */
+.wrapper[data-opened='true'] .caption {
+  opacity: 0;
 }
 .captionSource {
   display: block;
