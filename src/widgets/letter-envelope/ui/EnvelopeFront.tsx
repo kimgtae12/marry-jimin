@@ -7,7 +7,7 @@ import s from './LetterEnvelope.module.css'
 export function EnvelopeFront({ caption, captionSource }: { caption: string; captionSource?: string }) {
   return (
     <div className={s.frontInner}>
-      <svg viewBox="0 0 390 440" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <svg viewBox="0 0 390 440" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <filter id="env-shadow" x="-10%" y="-20%" width="120%" height="140%">
             <feDropShadow dx="0" dy="-3" stdDeviation="6" floodColor="#000" floodOpacity="0.28" />

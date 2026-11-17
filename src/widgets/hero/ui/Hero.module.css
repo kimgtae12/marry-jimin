@@ -14,15 +14,14 @@
 .kicker {
   margin: 10px 0 0;
   font-family: var(--font-serif-en);
-  font-style: italic;
   font-size: 0.85rem;
   letter-spacing: 0.22em;
 }
 .script {
   margin: 0 0 22px;
-  font-family: var(--font-script);
-  font-weight: 400;
-  font-size: 2.6rem;
+  font-family: var(--font-title);
+  font-weight: var(--title-weight);
+  font-size: 2.08rem;
   line-height: 1.15;
 }
 /* 화면 폭의 약 2/3 */

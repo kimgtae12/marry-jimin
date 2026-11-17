@@ -2,7 +2,7 @@
   --env-bg: #2a1a12;
   --env-side: #3c281d;
   --env-bottom: #2a1a12;
-  --front-h: min(62dvh, 113vw, 540px);
+  --front-h: min(50dvh, 80vw, 384px);
   --front-drop: 120px;
   --closed-inset: 36px;
   --ease-in-out: cubic-bezier(0.45, 0, 0.2, 1);
@@ -62,7 +62,6 @@
   background: var(--env-bg);
   color: rgb(246 242 234 / 0.8);
   font-family: var(--font-serif-en);
-  font-style: italic;
   font-size: 0.72rem;
   letter-spacing: 0.24em;
   pointer-events: none;
@@ -105,7 +104,6 @@
   transform: translateX(-50%);
   text-align: center;
   font-family: var(--font-serif-en);
-  font-style: italic;
   font-size: 0.7rem;
   line-height: 1.5;
   color: rgb(246 242 234 / 0.6);

@@ -1,8 +1,9 @@
 .month {
   margin: -12px 0 20px;
   text-align: center;
-  font-family: var(--font-script);
-  font-size: 1.8rem;
+  font-family: var(--font-title);
+  font-weight: var(--title-weight);
+  font-size: 1.44rem;
 }
 .calendar {
   width: 100%;
@@ -45,7 +46,6 @@
   margin: 20px 0 40px;
   text-align: center;
   font-family: var(--font-serif-en);
-  font-style: italic;
   font-size: 0.9rem;
   opacity: 0.8;
 }

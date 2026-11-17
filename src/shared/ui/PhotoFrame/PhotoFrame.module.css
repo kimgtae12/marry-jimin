@@ -15,7 +15,6 @@
   display: grid;
   place-items: center;
   font-family: var(--font-serif-en);
-  font-style: italic;
   letter-spacing: 0.08em;
   color: rgb(255 255 255 / 0.75);
   font-size: 0.9rem;

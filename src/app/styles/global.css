@@ -4,13 +4,17 @@
   --ink: #3b2b22;
   --muted: #8a796c;
   --line: rgb(59 43 34 / 0.14);
-  --paper: #fdfcfa;
+  --paper: #fefefe;
   --brown: #4a3427;
   --brown-deep: #1f1611;
+  /* 달력 섹션 — 질감 없이 짙은 브라운 */
+  --brown-dark: #2e2019;
 
-  --font-ko: 'Gowun Batang', serif;
-  --font-serif-en: 'Cormorant Garamond', 'Gowun Batang', serif;
-  --font-script: 'Pinyon Script', cursive;
+  --font-ko: 'Gowun Dodum', sans-serif;
+  --font-serif-en: 'Cinzel', 'Gowun Dodum', serif;
+  /* 섹션 제목 */
+  --font-title: 'Cinzel', 'Gowun Dodum', serif;
+  --title-weight: 600;
 
   /* 종이 질감 — 고운 입자 + 은은한 결 무늬를 미리 구운 PNG 타일.
      (SVG feTurbulence 를 그대로 쓰면 애니메이션 중 매 프레임 다시 그려져 버벅인다) */

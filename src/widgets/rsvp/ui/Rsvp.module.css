@@ -23,8 +23,9 @@
   margin: 0;
 }
 .footer .script {
-  font-family: var(--font-script);
-  font-size: 1.8rem;
+  font-family: var(--font-title);
+  font-weight: var(--title-weight);
+  font-size: 1.44rem;
   letter-spacing: 0;
   color: var(--ink);
 }
