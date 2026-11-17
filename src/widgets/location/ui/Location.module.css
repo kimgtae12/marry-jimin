@@ -28,9 +28,22 @@
 }
 .links {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   margin-top: 10px;
+}
+.link {
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 4px 10px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.icon {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
 }
 .transport {
   margin: 28px 0 0;

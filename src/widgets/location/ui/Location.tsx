@@ -1,13 +1,15 @@
 import { wedding } from '@/entities/wedding'
 import { Section } from '@/shared/ui'
+import { KakaoMapIcon, NaverMapIcon, TmapIcon } from './MapIcons'
 import s from './Location.module.css'
 
 export function Location() {
   const { venue, transport } = wedding
   const q = encodeURIComponent(venue.mapQuery)
   const links = [
-    { label: '네이버 지도', href: `https://map.naver.com/p/search/${q}` },
-    { label: '카카오맵', href: `https://map.kakao.com/link/search/${q}` },
+    { label: '네이버지도', href: venue.mapLinks.naver, Icon: NaverMapIcon },
+    { label: '카카오맵', href: venue.mapLinks.kakao, Icon: KakaoMapIcon },
+    { label: '티맵', href: venue.mapLinks.tmap, Icon: TmapIcon },
   ]
 
   return (
@@ -29,7 +31,14 @@ export function Location() {
 
       <div className={s.links}>
         {links.map((l) => (
-          <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className="ui-button ui-button--ghost">
+          <a
+            key={l.label}
+            href={l.href}
+            target="_blank"
+            rel="noreferrer"
+            className={`ui-button ui-button--ghost ${s.link}`}
+          >
+            <l.Icon className={s.icon} />
             {l.label}
           </a>
         ))}

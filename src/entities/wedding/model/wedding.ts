@@ -15,6 +15,11 @@ export const wedding: WeddingInfo = {
     name: '국민연금 웨딩홀',
     hall: '3F 에메랄드 홀',
     mapQuery: '국민연금 부산회관',
+    mapLinks: {
+      naver: 'https://naver.me/F4WIyifr',
+      kakao: 'https://kko.to/Pq9GUMY8xl',
+      tmap: 'https://tmap.life/62376c71',
+    },
   },
   intro: {
     title: 'Wedding Invitation',

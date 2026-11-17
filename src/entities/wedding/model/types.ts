@@ -23,7 +23,15 @@ export type WeddingInfo = {
   bride: Person & { father?: string; mother: string }
   date: Date
   dateLabel: string
-  venue: { name: string; hall: string; mapQuery: string; address?: string }
+  venue: {
+    name: string
+    hall: string
+    /** 구글 지도 임베드 검색어 */
+    mapQuery: string
+    address?: string
+    /** 지도 앱 공유 링크 */
+    mapLinks: { naver: string; kakao: string; tmap: string }
+  }
   intro: { title: string; quote: string[]; quoteSource: string; body: string[][] }
   transport: { label: string; lines: string[] }[]
   accounts: AccountGroup[]
