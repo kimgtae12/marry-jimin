@@ -1,3 +1,10 @@
+/* 영문 — Kleymisska (gluk, SIL OFL 1.1 · fonts/Kleymisska-OFL.txt) */
+@font-face {
+  font-family: 'Kleymisska';
+  src: url('./fonts/Kleymisska.ttf') format('truetype');
+  font-display: swap;
+}
+
 :root {
   --page-max: 480px;
 
@@ -11,9 +18,9 @@
   --brown-dark: #2e2019;
 
   --font-ko: 'Gowun Dodum', sans-serif;
-  --font-serif-en: 'Cinzel', 'Gowun Dodum', serif;
+  --font-serif-en: 'Kleymisska', 'Gowun Dodum', serif;
   /* 섹션 제목 */
-  --font-title: 'Cinzel', 'Gowun Dodum', serif;
+  --font-title: 'Kleymisska', 'Gowun Dodum', serif;
   --title-weight: 600;
 
   /* 종이 질감 — 고운 입자 + 은은한 결 무늬를 미리 구운 PNG 타일.

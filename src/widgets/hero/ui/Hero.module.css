@@ -21,7 +21,7 @@
   margin: 0 0 22px;
   font-family: var(--font-title);
   font-weight: var(--title-weight);
-  font-size: 2.08rem;
+  font-size: 1.25rem;
   line-height: 1.15;
 }
 /* 화면 폭의 약 2/3 */
@@ -43,18 +43,18 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 56px;
-  font-size: 0.92rem;
+  height: 50px;
+  font-size: 0.78rem;
   letter-spacing: 0.08em;
 }
 .venue {
   margin: 30px 0 4px;
-  font-size: 1rem;
+  font-size: 0.88rem;
 }
 .date {
   margin: 0;
   font-family: var(--font-serif-en);
-  font-size: 1.25rem;
+  font-size: 1.02rem;
   letter-spacing: 0.04em;
 }
 .scroll {
