@@ -25,7 +25,7 @@
 .footer .script {
   font-family: var(--font-title);
   font-weight: var(--title-weight);
-  font-size: 0.86rem;
+  font-size: 1.03rem;
   letter-spacing: 0;
   color: var(--ink);
 }

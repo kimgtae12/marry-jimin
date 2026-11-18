@@ -21,7 +21,7 @@
   --font-serif-en: 'Kleymisska', 'Gowun Dodum', serif;
   /* 섹션 제목 */
   --font-title: 'Kleymisska', 'Gowun Dodum', serif;
-  --title-weight: 600;
+  --title-weight: 400;
 
   /* 종이 질감 — 고운 입자 + 은은한 결 무늬를 미리 구운 PNG 타일.
      (SVG feTurbulence 를 그대로 쓰면 애니메이션 중 매 프레임 다시 그려져 버벅인다) */
