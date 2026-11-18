@@ -2,7 +2,8 @@
   --env-bg: #2a1a12;
   --env-side: #3c281d;
   --env-bottom: #2a1a12;
-  --front-h: min(50dvh, 80vw, 384px);
+  /* 변수는 선언 폴백이 안 되므로 dvh 는 아래 @supports 에서 덮어씀 (구형 iOS 대응) */
+  --front-h: min(50vh, 80vw, 384px);
   /* 펼친 뒤 주머니가 내려가는 정도 — 아랫부분이 조금 남도록 */
   --front-drop: calc(var(--front-h) * 0.15);
   --closed-inset: 36px;
@@ -11,11 +12,18 @@
   position: relative;
   width: 100%;
   max-width: var(--page-max);
+  height: 100vh;
   height: 100dvh;
   margin: 0 auto;
   overflow: hidden;
   background: var(--env-bg);
   box-shadow: 0 0 40px rgb(0 0 0 / 0.35);
+}
+
+@supports (height: 1dvh) {
+  .wrapper {
+    --front-h: min(50dvh, 80vw, 384px);
+  }
 }
 
 /* ───── 스크롤 영역 ───── */
@@ -32,6 +40,7 @@
   position: relative;
   z-index: 1;
   /* 마지막 내용이 앞주머니에 가리지 않도록 여유 */
+  padding-bottom: 22vh;
   padding-bottom: 22dvh;
   background-color: var(--paper);
   background-image: var(--grain);
@@ -43,12 +52,9 @@
     box-shadow 0.6s;
 }
 /* 최상단: 주머니에 꽂혀 있는 모습 — layout 을 건드리지 않도록 transform 으로만 */
-.wrapper:not([data-opened='true']):not([data-disabled]) .card {
+.wrapper:not([data-opened='true']) .card {
   transform: translateY(var(--closed-inset)) scale(0.9);
   box-shadow: 0 -2px 18px rgb(0 0 0 / 0.35);
-}
-.wrapper[data-disabled] .card {
-  padding-bottom: 0;
 }
 
 /* ───── 상단 바 ───── */
@@ -123,4 +129,14 @@
   font-size: 0.62rem;
   letter-spacing: 0.04em;
   opacity: 0.8;
+}
+
+/* '동작 줄이기' — 봉투는 그대로, 움직임만 즉시 전환 */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .topBar,
+  .front,
+  .caption {
+    transition: none;
+  }
 }

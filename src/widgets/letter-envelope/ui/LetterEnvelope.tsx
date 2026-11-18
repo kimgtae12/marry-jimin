@@ -10,8 +10,6 @@ type Props = {
   caption?: string
   /** 앞주머니 문구 출처 */
   captionSource?: string
-  /** true 면 봉투 없이 일반 페이지로 렌더 (모션 최소화 등 폴백) */
-  disabled?: boolean
 }
 
 /** 스크롤이 이만큼 내려가면 '편지를 꺼낸' 상태 */
@@ -23,28 +21,19 @@ const OPEN_THRESHOLD = 4
  * - 스크롤: 편지가 화면 폭으로 펼쳐지고 주머니가 내려가며,
  *   이후 편지가 하단에 고정된 주머니 뒤에서 계속 빠져나온다.
  * - 다시 최상단으로 오면 편지가 주머니에 꽂힌 모습으로 돌아간다.
+ * - '동작 줄이기' 설정이어도 봉투는 그대로 보이고, 전환 애니메이션만 끈다 (CSS).
  */
-export function LetterEnvelope({ children, label = 'WE INVITE YOU', caption = '', captionSource, disabled }: Props) {
+export function LetterEnvelope({ children, label = 'WE INVITE YOU', caption = '', captionSource }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null)
   const [opened, setOpened] = useState(false)
 
   useEffect(() => {
     const el = viewportRef.current
-    if (!el || disabled) return
+    if (!el) return
     const onScroll = () => setOpened(el.scrollTop > OPEN_THRESHOLD)
     el.addEventListener('scroll', onScroll, { passive: true })
     return () => el.removeEventListener('scroll', onScroll)
-  }, [disabled])
-
-  if (disabled) {
-    return (
-      <div className={s.wrapper} data-disabled>
-        <div className={s.viewport}>
-          <div className={s.card}>{children}</div>
-        </div>
-      </div>
-    )
-  }
+  }, [])
 
   return (
     <div className={s.wrapper} data-opened={opened}>
