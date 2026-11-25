@@ -1,0 +1,32 @@
+.button {
+  position: absolute;
+  top: calc(40px + env(safe-area-inset-top));
+  right: 14px;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid rgb(246 242 234 / 0.25);
+  border-radius: 50%;
+  background: rgb(42 26 18 / 0.72);
+  color: rgb(246 242 234 / 0.9);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(4px);
+}
+/* 재생 중엔 살짝 숨쉬듯 */
+.button[data-playing='true'] {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 5px rgb(42 26 18 / 0.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button[data-playing='true'] {
+    animation: none;
+  }
+}

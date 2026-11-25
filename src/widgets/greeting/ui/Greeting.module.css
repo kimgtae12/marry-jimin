@@ -34,6 +34,7 @@
   flex-direction: column;
   gap: 12px;
   width: fit-content;
+  max-width: 100%;
 }
 .parents div {
   display: grid;
@@ -43,6 +44,8 @@
 }
 .parents dt {
   text-align: right;
+  /* 좁은 화면에서도 '의 아들' 이 다음 줄로 밀리지 않도록 */
+  white-space: nowrap;
   font-size: 0.95rem;
 }
 .parents small {

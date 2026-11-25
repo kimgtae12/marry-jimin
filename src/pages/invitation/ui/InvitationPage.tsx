@@ -1,4 +1,5 @@
 import { wedding } from '@/entities/wedding'
+import { BgmToggle } from '@/features/toggle-bgm'
 import { AccountAccordion } from '@/widgets/account'
 import { Gallery } from '@/widgets/gallery'
 import { Greeting } from '@/widgets/greeting'
@@ -14,6 +15,7 @@ export function InvitationPage() {
     <LetterEnvelope
       caption={wedding.intro.quote.join('\n')}
       captionSource={wedding.intro.quoteSource}
+      overlay={<BgmToggle />}
     >
       <Hero />
       <Greeting />

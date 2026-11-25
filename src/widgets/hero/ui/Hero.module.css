@@ -22,7 +22,7 @@
   margin: 0 0 22px;
   font-family: var(--font-title);
   font-weight: var(--title-weight);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.15;
 }
 /* 화면 폭의 약 2/3 */
@@ -45,6 +45,7 @@
   justify-content: center;
   gap: 8px;
   height: 50px;
+  font-family: var(--font-title);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
 }

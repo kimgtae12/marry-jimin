@@ -10,6 +10,8 @@ type Props = {
   caption?: string
   /** 앞주머니 문구 출처 */
   captionSource?: string
+  /** 화면 위에 떠 있는 요소 (예: 배경음악 버튼) */
+  overlay?: ReactNode
 }
 
 /** 스크롤이 이만큼 내려가면 '편지를 꺼낸' 상태 */
@@ -23,7 +25,7 @@ const OPEN_THRESHOLD = 4
  * - 다시 최상단으로 오면 편지가 주머니에 꽂힌 모습으로 돌아간다.
  * - '동작 줄이기' 설정이어도 봉투는 그대로 보이고, 전환 애니메이션만 끈다 (CSS).
  */
-export function LetterEnvelope({ children, label = 'WE INVITE YOU', caption = '', captionSource }: Props) {
+export function LetterEnvelope({ children, label = 'WE INVITE YOU', caption = '', captionSource, overlay }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null)
   const [opened, setOpened] = useState(false)
 
@@ -48,6 +50,8 @@ export function LetterEnvelope({ children, label = 'WE INVITE YOU', caption = ''
       <div className={s.front}>
         <EnvelopeFront caption={caption} captionSource={captionSource} />
       </div>
+
+      {overlay}
     </div>
   )
 }
