@@ -34,6 +34,8 @@ export function usePolaroidFlutter(ref: RefObject<HTMLElement | null>, onShake?:
     if (!slices.length) return
     const shades = slices.map((sl) => sl.firstElementChild?.querySelector<HTMLElement>('[data-shade]') ?? null)
     const joints = Math.max(1, slices.length - 1)
+    // 바닥 그림자는 휘지 않으므로, 움직이는 동안엔 원래 자리 윤곽이 남지 않게 흐리게
+    const shadow = el.querySelector<HTMLElement>('[data-shadow]')
 
     // 띠를 자르는 기준 높이 = 실제 내용 높이
     const measure = el.querySelector<HTMLElement>('[data-measure]')
@@ -64,10 +66,12 @@ export function usePolaroidFlutter(ref: RefObject<HTMLElement | null>, onShake?:
         const shade = shades[i]
         if (shade) shade.style.opacity = String(Math.min(0.12, total / 420))
       })
+      if (shadow) shadow.style.opacity = String(clamp(1 - (Math.abs(flap.v) + Math.abs(bend.v) * 0.5) / 6))
     }
     const reset = () => {
       slices.forEach((sl) => (sl.style.transform = ''))
       shades.forEach((sh) => sh && (sh.style.opacity = ''))
+      if (shadow) shadow.style.opacity = ''
     }
 
     const tick = (now: number) => {

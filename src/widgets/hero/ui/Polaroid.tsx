@@ -59,7 +59,7 @@ export function Polaroid({ photo, alt }: Props) {
 
   return (
     <figure ref={ref} className={s.polaroid} style={{ '--n': POLAROID_SLICES } as CSSProperties}>
-      <div className={s.shadow} aria-hidden="true" />
+      <div data-shadow className={s.shadow} aria-hidden="true" />
       {slice(0)}
     </figure>
   )
