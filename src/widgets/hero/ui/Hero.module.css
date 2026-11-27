@@ -35,7 +35,8 @@
     0 1px 2px rgb(59 43 34 / 0.08),
     0 14px 34px rgb(59 43 34 / 0.18);
   transform: rotate(-1.2deg);
-  /* 좌우로 잡고 흔들기 (세로 드래그는 스크롤) — usePolaroidFlutter */
+  /* 아래 테두리를 쥐고 앞뒤로 흔드는 축 — usePolaroidFlutter (세로 드래그는 스크롤) */
+  transform-origin: 50% 100%;
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;

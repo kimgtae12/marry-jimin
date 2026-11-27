@@ -3,13 +3,8 @@ import { clamp } from '@/shared/lib'
 
 /** 평소 기울기 (deg) */
 const BASE_ANGLE = -1.2
-/** 손을 따라가는 최대 거리 (px) */
-const MAX_X = 70
-/** 손가락 이동 대비 실제 이동 비율 — 살짝 무겁게 */
-const DRAG_RATIO = 0.55
-/** 세게 흔들어도 넘지 않는 한계 (deg) — 옆면이 보일 만큼 돌지 않도록 */
-const MAX_ANGLE = 14
-const MAX_FLAP = 32
+/** 앞뒤로 젖혀지는 최대 각도 (deg) */
+const MAX_FLAP = 28
 
 type Spring = { v: number; vel: number }
 
@@ -20,7 +15,9 @@ const springTo = (s: Spring, target: number, k: number, damping: number, step: n
 }
 
 /**
- * 폴라로이드를 좌우로 잡고 흔들면 종이처럼 팔랑이다가 제자리로 돌아온다.
+ * 즉석 사진을 인화할 때처럼, 아래 테두리를 손에 쥐고 흔들면
+ * 폴라로이드가 앞뒤로(rotateX) 펄럭이다가 제자리로 돌아온다.
+ * - 손가락을 좌우로 문지르면 그 속도만큼 앞뒤로 젖혀짐 (자리는 그대로)
  * - 가로 드래그만 잡고(touch-action: pan-y), 세로는 그대로 페이지 스크롤
  * - React 리렌더 없이 requestAnimationFrame 으로 transform 만 갱신
  */
@@ -35,52 +32,40 @@ export function usePolaroidFlutter<T extends HTMLElement>(onShake?: (speed: numb
     const el = ref.current
     if (!el) return
 
-    const x: Spring = { v: 0, vel: 0 }
-    const angle: Spring = { v: BASE_ANGLE, vel: 0 }
-    const flap: Spring = { v: 0, vel: 0 } // rotateY — 종이가 펄럭이는 느낌
+    const flap: Spring = { v: 0, vel: 0 }
 
     let dragging = false
     let pointerId = -1
-    let startX = 0
-    let dragX = 0
+    let fingerX = 0
+    let prevFingerX = 0
+    let speed = 0 // 손가락 속도 (px/frame, 부드럽게)
     let raf = 0
     let last = 0
 
     const render = () => {
-      el.style.transform =
-        `perspective(700px) translate3d(${x.v.toFixed(2)}px,0,0) ` +
-        `rotate(${angle.v.toFixed(2)}deg) rotateY(${flap.v.toFixed(2)}deg)`
+      el.style.transform = `perspective(600px) rotate(${BASE_ANGLE}deg) rotateX(${flap.v.toFixed(2)}deg)`
     }
 
     const tick = (now: number) => {
       const step = clamp((now - (last || now - 16.7)) / 16.7, 0.5, 3)
       last = now
-      const prevX = x.v
 
       if (dragging) {
-        x.vel = 0
-        x.v += (dragX - x.v) * Math.min(1, 0.45 * step)
+        const raw = (fingerX - prevFingerX) / step
+        prevFingerX = fingerX
+        speed += (raw - speed) * 0.5
+        onShakeRef.current?.(Math.abs(speed))
+        // 손을 흔드는 방향에 따라 앞/뒤로 젖혀짐
+        springTo(flap, clamp(speed * 2.2, -MAX_FLAP, MAX_FLAP), 0.16, 0.22, step)
       } else {
-        springTo(x, 0, 0.09, 0.28, step)
+        speed = 0
+        // 놓으면 몇 번 펄럭이다 멈춤
+        springTo(flap, 0, 0.1, 0.12, step)
       }
-      // 프레임당 이동량 = 흔드는 속도
-      const speed = (x.v - prevX) / step
-      if (dragging) onShakeRef.current?.(Math.abs(speed))
-
-      // 흔드는 방향으로 기울고, 놓으면 살랑살랑 진동하며 복귀
-      springTo(angle, BASE_ANGLE + clamp(speed * 1.4 + x.v * 0.06, -10, 10), 0.12, 0.2, step)
-      springTo(flap, clamp(-speed * 2.6, -24, 24), 0.1, 0.17, step)
-      angle.v = clamp(angle.v, BASE_ANGLE - MAX_ANGLE, BASE_ANGLE + MAX_ANGLE)
       flap.v = clamp(flap.v, -MAX_FLAP, MAX_FLAP)
-
       render()
 
-      const settled =
-        !dragging &&
-        Math.abs(x.v) < 0.1 && Math.abs(x.vel) < 0.05 &&
-        Math.abs(angle.v - BASE_ANGLE) < 0.05 && Math.abs(angle.vel) < 0.02 &&
-        Math.abs(flap.v) < 0.05 && Math.abs(flap.vel) < 0.02
-      if (settled) {
+      if (!dragging && Math.abs(flap.v) < 0.05 && Math.abs(flap.vel) < 0.02) {
         raf = 0
         el.style.transform = ''
         return
@@ -98,15 +83,11 @@ export function usePolaroidFlutter<T extends HTMLElement>(onShake?: (speed: numb
       if (dragging) return
       dragging = true
       pointerId = e.pointerId
-      startX = e.clientX - x.v / DRAG_RATIO
-      dragX = x.v
+      fingerX = prevFingerX = e.clientX
       start()
     }
     const onMove = (e: PointerEvent) => {
-      if (!dragging || e.pointerId !== pointerId) return
-      const raw = (e.clientX - startX) * DRAG_RATIO
-      // 끝으로 갈수록 저항
-      dragX = MAX_X * Math.tanh(raw / MAX_X)
+      if (dragging && e.pointerId === pointerId) fingerX = e.clientX
     }
     const onUp = (e: PointerEvent) => {
       if (e.pointerId !== pointerId) return

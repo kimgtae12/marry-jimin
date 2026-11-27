@@ -4,7 +4,7 @@ import { clamp } from '@/shared/lib'
 /** 가만히 둬도 다 현상되는 시간 (ms) */
 const AUTO_MS = 9000
 /** 흔드는 속도(px/frame) 1 당 앞당겨지는 진행도 */
-const SHAKE_GAIN = 0.0016
+const SHAKE_GAIN = 0.0009
 
 const smooth = (a: number, b: number, v: number) => {
   const t = clamp((v - a) / (b - a))
