@@ -1,3 +1,4 @@
+import { publicUrl } from '@/shared/lib'
 import type { WeddingInfo } from './types'
 
 /**
@@ -83,6 +84,6 @@ export const wedding: WeddingInfo = {
       ],
     },
   ],
-  mainPhoto: undefined,
+  mainPhoto: publicUrl('images/main.jpg'),
   gallery: [],
 }

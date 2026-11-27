@@ -24,8 +24,12 @@ const springTo = (s: Spring, target: number, k: number, damping: number, step: n
  * - 가로 드래그만 잡고(touch-action: pan-y), 세로는 그대로 페이지 스크롤
  * - React 리렌더 없이 requestAnimationFrame 으로 transform 만 갱신
  */
-export function usePolaroidFlutter<T extends HTMLElement>() {
+export function usePolaroidFlutter<T extends HTMLElement>(onShake?: (speed: number) => void) {
   const ref = useRef<T>(null)
+  const onShakeRef = useRef(onShake)
+  useEffect(() => {
+    onShakeRef.current = onShake
+  })
 
   useEffect(() => {
     const el = ref.current
@@ -61,6 +65,7 @@ export function usePolaroidFlutter<T extends HTMLElement>() {
       }
       // 프레임당 이동량 = 흔드는 속도
       const speed = (x.v - prevX) / step
+      if (dragging) onShakeRef.current?.(Math.abs(speed))
 
       // 흔드는 방향으로 기울고, 놓으면 살랑살랑 진동하며 복귀
       springTo(angle, BASE_ANGLE + clamp(speed * 1.4 + x.v * 0.06, -10, 10), 0.12, 0.2, step)

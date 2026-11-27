@@ -48,7 +48,49 @@
   pointer-events: none;
 }
 .photo {
+  position: relative;
   aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.photoImg {
+  height: 100%;
+}
+/* ───── 즉석 사진 현상 (usePhotoDevelop) ───── */
+/* 색이 덜 올라온 바랜 톤 — 마지막에 사라짐 */
+.tint {
+  position: absolute;
+  inset: 0;
+  background: #b9a68c;
+  mix-blend-mode: color;
+  pointer-events: none;
+}
+/* 현상 전 어두운 필름 막 */
+.film {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(120% 90% at 50% 40%, #4a4d50 0%, #33363a 60%, #26282b 100%);
+  pointer-events: none;
+}
+.film span {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: rgb(246 242 234 / 0.55);
+  animation: hint 2.2s ease-in-out infinite;
+}
+@keyframes hint {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .film span {
+    animation: none;
+  }
 }
 .caption {
   display: flex;
